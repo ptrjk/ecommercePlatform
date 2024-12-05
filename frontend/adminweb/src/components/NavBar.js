@@ -23,7 +23,7 @@ export function NavBar() {
             <div className="nav-content">
                 <Link to='/'>
                     <div className='col' style={{ alignItems: "center" }}>
-                        <h3 style={{ textTransform: "uppercase", letterSpacing: "5px" }}><span>A</span>FurnitÜre</h3>
+                        <h3 style={{ textTransform: "uppercase", letterSpacing: "5px" }}>FurnitÜre</h3>
                         <h5>admin web</h5>
                     </div>
                 </Link>

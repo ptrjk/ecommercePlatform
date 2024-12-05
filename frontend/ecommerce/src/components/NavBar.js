@@ -40,7 +40,7 @@ export function NavBar() {
                 </div>
                 <div className="logo">
                     <Link to={"/"} className="link">
-                        <h3 style={{ textTransform: "uppercase", letterSpacing: "5px" }}><span>A</span>FurnitÜre</h3>
+                        <h3 style={{ textTransform: "uppercase", letterSpacing: "5px" }}>FurnitÜre</h3>
                     </Link>
 
                 </div>

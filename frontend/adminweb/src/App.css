@@ -154,7 +154,8 @@ a {
 .product-item img {
   width: 100%;
   aspect-ratio: 1.5;
-  object-fit: cover;
+  object-fit: contain;
+
 }
 
 .product-item {

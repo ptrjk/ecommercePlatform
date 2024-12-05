@@ -4,12 +4,14 @@ import CartItem from "../components/CartItem";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../App";
 import PopUpDialog from "../components/Dialog";
+import { useNavigate } from "react-router-dom";
 
 
 export default function CartPage() {
     const [cart, setCart] = useContext(CartContext);
     const [products, setProducts] = useState([])
     const [showDialog, setShowDialog] = useState(-1);
+    const navigate = useNavigate()
 
     const FindProductById = (id) => {
         let product = null;
@@ -53,7 +55,7 @@ export default function CartPage() {
 
     }
 
-    function test(e) {
+    function submitForm(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
         let data = {};
@@ -68,6 +70,7 @@ export default function CartPage() {
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' },
         });
+        navigate('/', { replace: true })
     }
 
     const calculateTotal = () => {
@@ -119,7 +122,7 @@ export default function CartPage() {
             <div className="divider"></div>
             <section className="orderDetails-section">
                 <h3>Order Details</h3>
-                <form className="cart-form" onSubmit={test}>
+                <form className="cart-form" onSubmit={submitForm}>
                     <div>
                         <label id="name" htmlFor="name">Name</label>
                         <input name="name"></input>

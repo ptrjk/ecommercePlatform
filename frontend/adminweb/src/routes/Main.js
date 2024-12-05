@@ -60,7 +60,7 @@ export default function MainPage() {
 
                 if (!response.ok) {
                     throw new Error("error");
-                }Z
+                }
                 showBarFunc('Product was deleted.')
                 await loadData()
                 setShowOverlay(-1);

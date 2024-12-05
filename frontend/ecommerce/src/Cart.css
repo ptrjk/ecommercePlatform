@@ -31,7 +31,7 @@
 .cart-product img {
     width: 280px;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     flex-shrink: 0;
 }
 
