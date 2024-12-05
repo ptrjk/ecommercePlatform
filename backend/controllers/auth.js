@@ -30,7 +30,6 @@ exports.verifyTokenValidity = (req, res) => {
         if (!token) {
             return res.status(403).json({ message: "No token found, access denied.", redirect: true });
         }
-        const user = jwt.verify(token, "secret123")
         console.log("OK")
         res.status(200).json({ message: "ok" })
     } catch (err) {
@@ -45,27 +44,35 @@ exports.postLogin = (req, res) => {
     const { username, password } = req.body
     console.log(username, password)
 
-    const query = `
+    try {
+
+
+
+        const query = `
         SELECT * FROM User WHERE username = ?;
     `
-    db.all(query, [username], (err, rows) => {
-        if (err || rows === null || rows.length !== 1) {
-            console.log(err || "something went wrong...")
-            res.json({ message: "something went wrong..." }).status(400)
-        } else {
-            async function comparePassword() {
-                if (! await bcrypt.compare(password, user.password)) {
-                    console.log("bad password")
-                    res.json({ message: "bad password" }).status(400)
-                } else {
-                    const token = jwt.sign(user, "secret123", { expiresIn: "1h" })
-                    res.cookie('token', token)
-                    res.json({ message: "ok" }).status(200)
-                    console.log("ok")
+        db.all(query, [username], (err, rows) => {
+            if (err || rows === null || rows.length !== 1) {
+                console.log(err || "something went wrong...")
+                res.json({ message: "something went wrong..." }).status(400)
+            } else {
+                async function comparePassword() {
+                    if (! await bcrypt.compare(password, user.password)) {
+                        console.log("bad password")
+                        res.json({ message: "bad password" }).status(400)
+                    } else {
+                        const token = jwt.sign(user, "secret123", { expiresIn: "1h" })
+                        res.cookie('token', token)
+                        res.json({ message: "ok" }).status(200)
+                        console.log("ok")
+                    }
                 }
+                const user = rows[0]
+                comparePassword()
             }
-            const user = rows[0]
-            comparePassword()
-        }
-    })
+        })
+    } catch (err) {
+        console.error("Error during login:", err.message);
+        res.status(500).json({ message: "Internal server error." });
+    }
 }

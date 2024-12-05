@@ -22,29 +22,34 @@ exports.postCreateProduct = (req, res) => {
 exports.getProducts = (req, res) => {
     const category = req.params.category
     console.log(category)
-    if (category === 'all') {
-        const query = `
+    try {
+        if (category === 'all') {
+            const query = `
         SELECT * FROM Product;
         `;
-        db.all(query, [], (err, rows) => {
-            if (err) {
-                console.log("something went wrong...");
-                return res.status(400).json({ products: [] });
-            }
-            return res.status(200).json({ products: rows });
-        });
-    } else {
-        const query = `
+            db.all(query, [], (err, rows) => {
+                if (err) {
+                    console.log("something went wrong...");
+                    return res.status(400).json({ products: [] });
+                }
+                return res.status(200).json({ products: rows });
+            });
+        } else {
+            const query = `
         SELECT * FROM Product
         WHERE category = ?;
         `;
-        db.all(query, [category], (err, rows) => {
-            if (err) {
-                console.log("something went wrong...");
-                return res.status(400).json({ products: [] });
-            }
-            return res.status(200).json({ products: rows });
-        });
+            db.all(query, [category], (err, rows) => {
+                if (err) {
+                    console.log("something went wrong...");
+                    return res.status(400).json({ products: [] });
+                }
+                return res.status(200).json({ products: rows });
+            });
+        }
+    } catch (err) {
+        console.error("Error during login:", err.message);
+        res.status(500).json({ message: "Internal server error." });
     }
 }
 
@@ -55,15 +60,19 @@ exports.deleteProduct = (req, res) => {
     let querry = `
     DELETE FROM Product WHERE id= ?;
     `
-
-    db.run(querry, [id], (err) => {
-        if (err) {
-            console.log("error " + err);
-            res.status(400).json({ error: "error" });
-        }
-        else {
-            console.log("deleted");
-            res.status(200).json({ error: "none" });
-        }
-    });
+    try {
+        db.run(querry, [id], (err) => {
+            if (err) {
+                console.log("error " + err);
+                res.status(400).json({ error: "error" });
+            }
+            else {
+                console.log("deleted");
+                res.status(200).json({ error: "none" });
+            }
+        });
+    } catch (err) {
+        console.error("Error during login:", err.message);
+        res.status(500).json({ message: "Internal server error." });
+    }
 }
