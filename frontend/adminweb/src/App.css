@@ -1,0 +1,438 @@
+* {
+  box-sizing: border-box;
+  font-weight: 400;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 32px;
+  word-break: break-all;
+}
+
+
+/* allways showing scrollbars */
+body {
+  overflow-y: scroll;
+}
+
+
+p {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.login-form {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form .login-form-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.login-form .row {
+  flex-direction: row;
+}
+
+button {
+  background-color: #1282f9;
+  color: #ffffff;
+  padding: 10px 25px;
+  border-radius: 5px;
+  border: none;
+  font-family: 'Montserrat';
+  font-size: 16px;
+  transition: background-color 0.1s;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #276be0;
+  outline: none;
+}
+
+button:active {
+  background-color: #0f62ba;
+  outline: none;
+}
+
+label {
+  font-size: 14px;
+}
+
+input,
+select {
+  border: solid 1px #DADADA;
+  height: 25px;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #929292;
+}
+
+.main-content {
+  width: 80%;
+  margin: 0 auto 200px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.left-bar {
+  background-color: #292A30;
+  color: white;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  /* position: fixed;
+  top: 0;
+  z-index: 1; */
+  padding-top: 80px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.left-bar ul {
+  list-style: none;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-bar li {
+  font-size: 16px;
+}
+
+.main-section {
+  display: flex;
+  margin-left: 250px;
+}
+
+.product-info {
+  padding: 10px;
+}
+
+.products-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product-item img {
+  width: 100%;
+  aspect-ratio: 1.5;
+  object-fit: cover;
+}
+
+.product-item {
+  width: 100%;
+}
+
+.product-item h1 {
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.product-item p {
+  font-size: 14px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.product-item h2 {
+  font-size: 20px;
+  color: #000000;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  font-weight: 500;
+}
+
+.product-item button {
+  background-color: #ED5659;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 10px 30px;
+  cursor: pointer;
+  margin: 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.product-item button:hover {
+  background-color: #e64346;
+}
+
+.product-item .row {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 5px;
+}
+
+label {
+  font-size: 14px;
+}
+
+input,
+textarea {
+  border: solid 1px #DADADA;
+  width: 350px;
+  height: 40px;
+  resize: none;
+}
+
+textarea {
+  height: 100px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #929292;
+}
+
+.orders-list {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin-top: 50px;
+}
+
+.order-tile-layout .info {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.order-tile-layout .info div {
+  width: 100%;
+  text-align: center;
+}
+
+.order-tile-layout .info div {
+  display: flex;
+  justify-content: center;
+}
+
+.orders-list li p {
+  font-size: 16px;
+}
+
+.order-tile-layout {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 30px;
+}
+
+.order-tile {
+  border: solid 1px #CECECE;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 30px;
+  margin-bottom: 10px;
+}
+
+.order-tile .title {
+  width: 50%;
+}
+
+.order-tile .title p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.statusRed {
+  background-color: red;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.statusYellow {
+  background-color: rgb(255, 225, 0);
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.statusGreen {
+  background-color: rgb(60, 255, 0);
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.overlay {
+  background-color: rgba(36, 36, 36, 0.266);
+  width: calc(100% - 250px);
+  /* Adjust width to account for left margin */
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.overlay-content {
+  margin-top: 100px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.overlay-content p {
+  margin-bottom: 15px;
+}
+
+.overlay-content button {
+  background-color: white;
+  border: solid 1px black;
+  cursor: pointer;
+}
+
+.overlay-content .btn-remove {
+  background-color: #e64346;
+  border: none;
+  color: white;
+}
+
+.overlay-content .row {
+  gap: 20px;
+}
+
+
+.right-content {
+  width: 100%;
+}
+
+
+
+@media (min-width: 1440px) {
+  .main-content {
+    width: 1150px;
+  }
+}
+
+@media (min-width: 1840px) {
+  .main-content {
+    width: 1570px;
+  }
+}
+
+@media (max-width: 1270px) {
+  .main-content {
+    width: 700px;
+  }
+}
+
+@media (max-width: 970px) {
+  .main-content {
+    width: 500px;
+  }
+}
+
+.file-input {
+  display: none;
+}
+
+.file-input-label {
+  display: inline-block;
+  padding: 10px 20px;
+  border: solid 2px #a4caf3;
+  color: #1282f9;
+  border-radius: 5px;
+  font-weight: 400;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  text-align: center;
+}
+
+.file-input-label:hover {
+  background-color: #1282f9;
+  color: white;
+  border: solid 2px #1282f9;
+}
+
+.file-input-label:active {
+  background-color: #1282f9;
+  color: white;
+}
+
+
+.loading-button {
+  background-color: gainsboro;
+}
+
+.loading-button:hover {
+  background-color: rgb(198, 198, 198);
+}
+
+.alert-bar {
+  background-color: #efefef;
+  border: solid 1px rgb(173, 173, 173);
+  border-radius: 5px;
+  position: fixed;
+  padding: 5px 30px;
+  left: calc(300px + (100% - 300px) / 2);
+  top: 30px;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  opacity: 0;
+  animation-name: fade;
+  animation-duration: 3s;
+}
+
+@keyframes fade {
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
